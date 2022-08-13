@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Bubble</title>
+    <style>
+        body{
+            border: 2px solid tomato;
+            padding: 10px;
+            margin: 5px;
+        }
+        section{
+            border: 2px solid green;
+            padding: 10px;
+            margin: 5px;
+        }
+        ul{
+            border: 2px solid red;
+            padding: 10px;
+            margin: 5px;
+            list-style: none;
+        }
+        #item-2{
+            border: 2px solid purple;
+            padding: 10px;
+            list-style: none;
+        }
+    </style>
+</head>
+<body id="body">
+    <h1>Exploring Event Bubble</h1>
+    <section id="list-container">
+        <ul id="list-ul">
+            <li id="item-1">Lorem, ipsum.</li>
+            <li id="item-2">Sint, beatae.</li>
+            <li id="item-3">Ut, quis.</li>
+            <li id="item-4">Delectus, modi.</li>
+            <li id="item-5">Mollitia, alias!</li>
+            <li id="item-6">Voluptate, nemo!</li>
+        </ul>
+    </section>
+
+    <script>
+        document.getElementById('item-2').addEventListener('click', function(event){
+            console.log('Item 2 Clicked');
+            // event.stopPropagation(); // aita just item-2 bahire ja thakbe sob kichore stop kore dibe
+            // event.stopImmediatePropagation() // aita item-2 er moddhe protom jeyta thakbe seyta bade sob gulare stop kore dibe
+        });
+        document.getElementById('list-ul').addEventListener('click', function(){
+            console.log('Ul Clicked');
+        });
+        document.getElementById('list-container').addEventListener('click', function(){
+            console.log('Section Container Clicked');
+        });
+        document.getElementById('body').addEventListener('click', function(){
+            console.log('Body Clicked');
+        });
+    </script>
+</body>
+</html>
